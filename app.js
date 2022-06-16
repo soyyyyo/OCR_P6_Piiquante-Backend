@@ -2,12 +2,12 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-const stuffRoutes = require('./routes/stuff');
+const stuffRoutes = require('./routes/stuff'); ///
 const userRoutes = require('./routes/user');
 const path = require('path');
 
 /// CONNEXION A MOONGOOSE
-mongoose.connect('mongodb+srv://izame:<KryptoJustice75>@cluster0.owgl8.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://izame:KryptoJustice75@cluster0.owgl8.mongodb.net/?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     next();
   });
 
-app.use('/api/stuff', stuffRoutes);
+app.use('/api/stuff', stuffRoutes); ///
 app.use('/api/auth', userRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
