@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const thingSchema = mongoose.Schema({
+const sauceSchema = mongoose.Schema({
   // champ _id automatiquent généré par Moongoose
     name: { type: String, required: true },
     manufacturer: { type: String, required: true },
@@ -9,10 +9,12 @@ const thingSchema = mongoose.Schema({
     imageUrl: { type: String, required: true },
     heat: { type: Number, required: true },
     userId: { type: String, required: true },
-    // likes: { type: String, required: false },
-    // dislikes: { type: String, required: false },
-    // usersLiked: { type: Array, required: false },
-    // usersDisliked: { type: Array, required: false },
+    likes: { type: Number, required: false, default: 0 },
+    dislikes: { type: Number, required: false, default: 0 },
+    usersLiked: { type: Array, required: false, default: [] },
+    usersDisliked: { type: Array, required: false, default: [] },
   });
 
-module.exports = mongoose.model('Thing', thingSchema);
+  // défini le nom du répértoire, et le type de shéma utilisé
+module.exports = mongoose.model('Sauces', sauceSchema);
+
