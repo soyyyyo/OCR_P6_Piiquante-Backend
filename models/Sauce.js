@@ -11,8 +11,8 @@ const sauceSchema = mongoose.Schema({
     userId: { type: String, required: true },
     likes: { type: Number, required: false, default: 0 },
     dislikes: { type: Number, required: false, default: 0 },
-    usersLiked: { type: Array, required: false, default: [] },
-    usersDisliked: { type: Array, required: false, default: [] },
+    usersLiked: { type: [String], required: false, default: [] },
+    usersDisliked: { type: [String], required: false, default: [] },
   });
 
   // défini le nom du répértoire, et le type de shéma utilisé
