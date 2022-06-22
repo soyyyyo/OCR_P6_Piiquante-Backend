@@ -1,8 +1,5 @@
 const Sauce = require('../models/sauce');
 
-
-////// WIP
-
 exports.likeSystem = (req, res, next) => {
     // console.log(req.body.userId)
     // console.log(req.body.like)
@@ -15,13 +12,14 @@ exports.likeSystem = (req, res, next) => {
         Sauce.updateOne(
             {_id : req.params.id},
             {
-                $inc: {likes: 1}, // -1
-                $push: {usersLiked: req.body.userId} //pull
+                $inc: {likes: 1},
+                $push: {usersLiked: req.body.userId}
             })
         .then(() => res.status(201).json({ message: "Un like en plus !"}))
         .catch(error => res.status(400).json({ error }));
         }
 
+        // if userId présent dans usersLiked && like value 0
         else if(objet.usersLiked.includes(req.body.userId) && req.body.like === 0) {
         Sauce.updateOne(
             {_id : req.params.id},
@@ -56,11 +54,6 @@ exports.likeSystem = (req, res, next) => {
             .then(() => res.status(201).json({ message: "Un like en plus !"}))
             .catch(error => res.status(400).json({ error }));
             }
-
-        else {
-            console.log("yaaaapaaaaaa");
-        }
-        // res.status(200).json(objet);
     })
     .catch(error => res.status(500).json({ error }));
 }
